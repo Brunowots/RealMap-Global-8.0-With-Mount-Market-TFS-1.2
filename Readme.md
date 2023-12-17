@@ -1,4 +1,4 @@
-# RealMap Global [8.0] [TFS 1.2]
+# RealMap Global [8.0] with client [8.6] sprites tibia 8.0~12/13 [TFS 1.2]
 
 >  
 > **Info:**  
