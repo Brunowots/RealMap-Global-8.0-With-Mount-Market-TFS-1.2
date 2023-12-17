@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Harog" script="Harog.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="160" head="37" body="16" legs="54" feet="114" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="
+		hammer,2557,50;
+		nail,8309,10;
+		fire bug,5468,100;
+		wooden ties,10033,30;
+		wood, 5901, 100;
+		bricklayers kit,8613,250;
+		saw,2558, 80;
+		metal fitting, 10034, 500;
+		flask of rust remover,9930,50;" />
+	</parameters>
+</npc>

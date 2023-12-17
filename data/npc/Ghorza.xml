@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<npc name="Ghorza" script="Ghorza.lua" walkinterval="2000" floorchange="0">
+  <health now="100" max="100" />
+  <look type="859" head="0" body="0" legs="0" feet="0" addons="0" />
+  <voices>
+    <voice text="Spirits are restless." interval2="120" margin="1" yell="no" />
+    <voice text="Great Hunger is upset." interval2="0" margin="1" yell="no" />
+    <voice text="All water drying up and Vuzrog does nothing!" interval2="120" margin="1" yell="no" />
+  </voices>
+
+  <parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="			
+			blank rune,2260,10;			
+			Great Health Potion,7591,190;
+			Great Mana Potion,7590,120;
+			Great Spirit Potion,8472,120;
+			Health Potion,7618,45;			
+			Mana Potion,7620,50;			
+			Strong Health Potion,7588,100;
+			Strong Mana Potion,7589,80;
+			Ultimate Health Potion,8473,310; />
+		<parameter key="shop_sellable" value="
+			empty potion flask,7634,5;
+			empty potion flask,7635,5;
+			empty potion flask,7636,5;
+			vial,2006,5;" />
+	</parameters>
+</npc>

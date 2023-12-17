@@ -1,0 +1,7 @@
+<npc name="Rachel" script="runes.lua" floorchange="0" walkinterval="3000" >
+	<health now="100" max="100"/>
+	<look type="136" head="58" body="84" legs="86" feet="114"/>
+	<parameters>
+		<parameter key="message_walkaway" value="These impatient young brats!"/>
+	</parameters>
+</npc>

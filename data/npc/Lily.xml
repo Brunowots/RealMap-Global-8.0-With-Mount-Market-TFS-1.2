@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Lily" script="Lily.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="138" head="78" body="101" legs="86" feet="115" addons="0" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="cure poison rune,2266,65;lifefluid,2006,50,2;" />
+		<parameter key="shop_sellable" value="cookie,2687,1;vial,7490,5" />
+	</parameters>
+</npc>

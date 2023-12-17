@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Lord'Paulistinha" nameDescription="Lord'Paulistinha (Level 250). He is a master sorcerer. He is the Leader of the Pk Team" race="blood" experience="0" speed="450" manacost="390" skull="red">
+  <health now="3500" max="3500"/>
+  <look type="130" head="39" body="122" legs="125" feet="57" addons="2" corpse="6080"/>
+  <targetchange interval="5000" chance="8"/>
+  <strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="0"/>
+		<flag pushable="1"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="4"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-5"/>
+		<attack name="physical" interval="2000" chance="100" range="7" min="-410" max="-515">
+			<attribute key="shootEffect" value="death"/>
+			<attribute key="areaEffect" value="MORTAREA"/>
+		</attack>
+		<attack name="fire" interval="2000" chance="25"  range="7" radius="7" target="0" min="-515" max="-725">
+		<attribute key="areaEffect" value="firearea"/>
+		</attack>
+		<attack name="energy" interval="2000" chance="35" target="0" length="5" spread="3" min="-310" max="-415">
+			<attribute key="areaEffect" value="TELEPORT"/>
+		</attack>
+		<attack name="poisoncondition" interval="2000" chance="15" range="7" min="-5" max="-10">
+			<attribute key="shootEffect" value="poison"/>
+		</attack>
+	</attacks>
+	<defenses armor="15" defense="15">
+		<defense name="healing" interval="1500" chance="50" min="400" max="900">
+			<attribute key="areaEffect" value="blueshimmer"/>
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity invisible="1"/>
+	</immunities>
+	<summons maxSummons="2">
+		<summon name="fire elemental" interval="2000" chance="30"/>
+	</summons>
+	<voices interval="5000" chance="10">
+		<voice sentence="Vai morrer lixo HAHAHAHA."/>
+		<voice sentence="Tá hunted no meu servidor hahahaha!"/>
+		<voice sentence="Pay boh e morra o seu comedia HAHAHAHAHA!"/>
+	</voices>
+	<loot>
+		<item id="2493" chance="132000"/>				<!-- demon helmet -->
+		<item id="2656" chance="132000"/>				<!-- blue robe -->
+		<item id="7730" chance="132000"/>				<!-- blue legs -->
+		<item id="2195" chance="132000"/>					<!-- boots of haste -->
+		<item id="2520" chance="132000"/>				<!-- demon shield -->
+		<item id="2173" chance="132000"/>					<!-- amulet of loss -->
+		<item id="2361" chance="132000"/>				<!-- frozen starlight -->
+    <item id="2000" chance="132000"><!-- red backpack -->
+        <inside>
+            <item id="2554" chance="132000" /><!-- shovel -->
+            <item id="2120" chance="132000" /><!-- rope -->
+            <item id="2268" countmax="100" chance="132000" /><!-- sudden death runes-->
+			<item id="2268" countmax="100" chance="132000" /><!-- sudden death runes-->
+			<item id="2268" countmax="100" chance="132000" /><!-- sudden death runes-->
+			<item id="2273" countmax="100" chance="132000" /><!-- ultimate healing runes-->
+			<item id="2273" countmax="100" chance="132000" /><!-- ultimate healing runes-->
+			<item id="2789" countmax="100" chance="132000" /><!-- brown mushrooms -->
+			<item id="2160" countmax="15" chance="132000" /><!-- crystal coins -->
+        </inside>
+    </item>
+</loot>
+</monster>
+

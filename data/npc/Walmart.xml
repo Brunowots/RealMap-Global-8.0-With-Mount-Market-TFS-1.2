@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Walmart" script="Walmart.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="128" head="58" body="68" legs="109" feet="115" addons="0" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" 
+		value="
+		banana,2676,2;
+		bar of chocolate,6574,800;
+		beetroot,8845,2;
+		blessed wooden stake,5942,5000;
+		bottle of bug milk,9674,200;
+		brown bread,2691,3;
+		brown mushroom,2789,10;
+		bulb of garlic,9114,3;
+		candy,6569,100;
+		candy cane,2688,150;
+		carrot,2684,2;
+		cheese,2696,5;
+		concentrated demonic blood,6558,500;
+		cookie,2687,2;
+		corncob,2686,3;
+		cream cake,7966,200;
+		cucumber,8842,3;
+		dead bat,4298,100;
+		dead chicken,4265,100;		
+		fern,2801,24;
+		flour,2692,10;
+		gingerbreadman,6501,150;
+		green perch,7159,80;
+		ham,2671,5;
+		honeycomb,5902,500;
+		hydra tongue,7250,100;
+		jalapeno pepper,8844,2;
+		lemon,8841,3;
+		mango,5097,10;
+		meat,2666,3;
+		northern pike,2669,90;
+		onion,8843,2;
+		orange,2675,5;
+		peanut,7910,5;
+		plum,8839,3;
+		potato,8838,4;
+		powder herb,2803,200;
+		pumpkin,2683,10;
+		rainbow trout,7158,90;
+		red mushroom,2788,12;
+		rice ball,11246,500;
+		roll,2690,2;
+		sandcrawler shell,11373,2000;
+		shadow herb,2804,700;
+		shrimp,2670,45;
+		sling herb,2802,200;
+		star herb,2800,21;
+		stone herb,2799,28;
+		tomato,2685,5;
+		troll green,2805,150;
+		vial of water, 2006, 8, 1;
+		vial of beer, 2006, 8, 3;
+		vial of milk,2006,15,6;
+		vial of coconut milk,2006,15,140;
+		vial of wine,2006,5,15;
+		vial of mead,2006,5,43;		
+		juice squeezer,5865,100;
+		coconut,2678,50;		
+		white mushroom,2787,6;" />
+		
+		
+		
+		
+		
+	</parameters>
+</npc>

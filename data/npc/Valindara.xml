@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Valindara" script="Valindara.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="138" head="0" body="0" legs="114" feet="97" addons="0" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_sellable" value="
+			black pearl, 2144, 280;
+			blue rose, 2745, 200;
+			butterfly ring, 29003, 2000;
+			colourful snail shell, 29001, 250;
+			dandelion seeds, 29000, 200;
+			dream blossom staff, 29005, 5000;
+			empty potion flask,7634,5;
+			empty potion flask,7635,5;
+			empty potion flask,7636,5;
+			fairy wings, 28999, 200;
+			fern, 2801, 20;
+			green giant shimmering pearl, 7632, 3000;
+			brown giant shimmering pearl, 7633, 3000;
+			gold ingot, 9971, 5000;
+			gold nugget, 2157, 850;
+			golden figurine, 5799, 3000;
+			hibiscus dress, 8873, 3000;
+			leaf star, 29036, 50;
+			mandrake, 5015, 5000;
+			panpipes, 2074, 150;
+			powder herb, 2803, 10;
+			red rose, 2744, 10;
+			sling herb, 2802, 10;
+			small amethyst, 2150, 200;
+			small diamond, 2145, 300;
+			small emerald, 2149, 250;
+			small enchanted amethyst, 7762, 200;
+			small enchanted emerald, 7761, 250;
+			small enchanted ruby, 7760, 250;
+			small enchanted sapphire, 7759, 250;
+			small ruby, 2147, 250;
+			small sapphire, 2146, 250;
+			small topaz, 9970, 200;
+			star herb, 2800, 15;
+			stone herb, 2799, 20;
+			summer dress, 8874, 1500;
+			vial, 2006, 5;
+			wedding ring, 2121, 100;
+			white pearl, 2143, 160;
+			wild flowers, 28996, 120;
+			wood cape, 2664, 5000;
+			wooden spellbook, 29004, 12000;" />
+		<parameter key="shop_buyable" value="			
+			black pearl, 2144, 280;
+			bronze goblet, 5807, 2000;			
+			golden amulet, 2130, 6600;
+			golden goblet, 5805, 5000;			
+			great health potion, 7591, 190;
+			great mana potion, 7590, 120;
+			great spirit potion, 8472, 190;
+			health potion, 7618, 45;			
+			mana potion, 7620, 50;			
+			ruby necklace, 2133, 3560;
+			silver goblet, 5806, 3000;
+			small amethyst, 2150, 400;
+			small diamond, 2145, 600;
+			small emerald, 2149, 500;
+			small ruby, 2147, 500;
+			small sapphire, 2146, 500;			
+			strong health potion, 7588, 100;
+			strong mana potion, 7589, 80;			
+			ultimate health potion, 8473, 310;
+			watering can, 7734, 50;
+			wedding ring, 2121, 990;
+			white pearl, 2143, 320;" />
+	</parameters>
+</npc>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Old Farmer" script="Old Farmer.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="128" head="58" body="68" legs="109" feet="115" addons="0" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" 
+		value="
+		battle stone,12403,580;
+		bloody pincers,10550,200;
+		brimstone fangs,12658,760;
+		brimstone shell,12659,420;
+		broken shamanic staff,12408,70;
+		compass,11219,90;
+		cultish mask,10555,560;
+		cultish robe,10556,300;
+		cyclops toe,10574,110;
+		demon horn,5954,2000;
+		demonic skeletal hand,10564,160;
+		draken sulphur,12614,1100;
+		elven scouting glass,12420,100;
+		elvish talisman,10552,90;
+		fiery heart,10553,750;
+		flask of embalming fluid,12422,60;
+		frosty heart,10578,560;
+		green dragon leather,5877,200;
+		green dragon scale,5920,200;
+		hellspawn tail,11221,950;
+		lion's mane,10608,120;
+		metal spike,11215,640;
+		mystical hourglass,10577,1400;
+		orc tooth,11113,300;
+		petrified scream,11337,500;
+		piece of dead brain,10580,840;
+		piece of scarab shell,10558,90;
+		pile of grave earth,12440,50;
+		poisonous slime,10557,100;
+		polar bear paw,10567,60;
+		protective charm,12400,120;
+		rope belt,12448,132;
+		sabretooth,11228,800;
+		snake skin,10611,800;
+		strand of medusa hair,11226,1200;
+		swamp grass,10603,40;
+		thick fur,11224,300;
+		vampire teeth,10602,550;
+		war crystal,10571,920;
+		warmaster's wristguards,11322,400;
+		winter wolf fur,11212,40;
+		wyrm scale,10582,800;
+		wyvern talisman,10561,530"/>
+		<parameter key="shop_sellable" value="
+		battle stone,12403,290;
+		bloody pincers,10550,100;
+		brimstone fangs,12658,380;
+		brimstone shell,12659,210;
+		broken shamanic staff,12408,35;
+		compass,11219,45;
+		cultish mask,10555,280;
+		cultish robe,10556,150;
+		cyclops toe,10574,55;
+		demon horn,5954,1000;
+		demonic skeletal hand,10564,80;
+		draken sulphur,12614,550;
+		elven scouting glass,12420,50;
+		elvish talisman,10552,45;
+		fiery heart,10553,375;
+		flask of embalming fluid,12422,30;
+		frosty heart,10578,280;
+		green dragon leather,5877,100;
+		green dragon scale,5920,100;
+		hellspawn tail,11221,475;
+		lion's mane,10608,60;
+		metal spike,11215,320;
+		mystical hourglass,10577,700;
+		orc tooth,11113,150;
+		petrified scream,11337,250;
+		piece of dead brain,10580,420;
+		piece of scarab shell,10558,45;
+		pile of grave earth,12440,25;
+		poisonous slime,10557,50;
+		polar bear paw,10567,30;
+		protective charm,12400,60;
+		rope belt,12448,66;
+		sabretooth,11228,400;
+		snake skin,10611,400;
+		strand of medusa hair,11226,600;
+		swamp grass,10603,20;
+		thick fur,11224,150;
+		vampire teeth,10602,275;
+		war crystal,10571,460;
+		warmaster's wristguards,11322,200;
+		winter wolf fur,11212,20;
+		wyrm scale,10582,400;
+		wyvern talisman,10561,265"/>
+		
+		
+		
+	</parameters>
+</npc>

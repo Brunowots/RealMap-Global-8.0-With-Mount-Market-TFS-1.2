@@ -1,0 +1,9 @@
+<npc name="Nelly" script="runes.lua" floorchange="0" walkinterval="3000" >
+	<health now="100" max="100"/>
+	<look type="138" head="114" body="64" legs="1" feet="95"/>
+	<parameters>
+		<parameter key="message_greet" value="Oh, please come in, |PLAYERNAME|. What do you need?"/>
+		<parameter key="message_placedinqueue" value="Sorry |PLAYERNAME|, I am already talking to a customer. Wait a minute, please."/>
+	</parameters>
+</npc>
+
