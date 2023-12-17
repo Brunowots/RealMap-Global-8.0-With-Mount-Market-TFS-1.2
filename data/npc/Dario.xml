@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Dario" script="Dario.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="159" head="3" body="58" legs="41" feet="115" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="crossbow,2455,500;bow,2456,400;onyx arrow,7365,7;piercing bolt,7363,5;power bolt,2547,7;royal spear,7378,15;spear,2389,9;throwing star,2399,42;arrow,2544,3;bolt,2543,4;" />
+		<parameter key="shop_sellable" value="crossbow,2455,120;bow,2456,100;spear,2389,3;" />
+	</parameters>
+</npc>

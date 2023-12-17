@@ -1,0 +1,10 @@
+<npc name="Sigurd" script="Sigurd.lua" floorchange="0" walkinterval="3000" >
+	<health now="100" max="100"/>
+	<look type="69" head="0" body="0" legs="0" feet="0"/>
+	<parameters>
+		<parameter key="message_greet" value="Welcome to the magic store, |PLAYERNAME|!"/>
+		<parameter key="message_placedinqueue" value="You next |PLAYERNAME|, jawoll!"/>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="blank rune,2260,10;chameleon rune,2291,210;convince creature rune,2290,80;destroy field rune,2261,45, 3;energy field rune,2277,115, 3;energy wall rune,2279,340, 4;explosion rune,2313,250, 3;firebomb rune,2305,235, 2;fire field rune,2301,85, 3;fire wall rune,2303,245, 4;great fireball rune,2304,180, 2;fireball rune,2302,95, 5;heavy magic missile rune,2311,125, 5;antidote rune,2266,65,1;intense healing rune,2265,95;ultimate healing rune,2273,175,1;light magic missile rune,2287,40, 5;poison field rune,2285,65, 3;poison wall rune,2289,210, 4;snakebite rod,2182,500;spellbook,2175,150;sudden death rune,2268,325;lifefluid,2006,50,2;manafluid,2006,50,7;wand of vortex,2190,500;quagmire rod,2181,10000;snakebite rod,2182,500;moonlight rod,2186,1000;volcanic rod,2185,5000;tempest rod,2183,15000;wand of dragonbreath,2191,1000;wand of plauge,2188,5000;wand of cosmic energy,2189,10000;" />
+	</parameters>
+</npc>

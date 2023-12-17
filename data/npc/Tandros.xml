@@ -1,0 +1,8 @@
+<npc name="Tandros" script="runes.lua" floorchange="0" walkinterval="0" speed="0">
+	<health now="100" max="100"/>
+	<look type="132" head="78" body="79" legs="113" feet="95"/>
+	<parameters>
+		<parameter key="message_greet" value="Be greeted, student of the arcane."/>
+		<parameter key="message_placedinqueue" value="Show some patience please."/>
+	</parameters>
+</npc>

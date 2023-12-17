@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups>
+
+<!-- Website to generate flags https://comedinha.github.io/flags-calculator/ -->
+
+	<group id="1" name="player" flags="0" maxdepotitems="0" maxvipentries="0" access="0" />
+<!------------------- GAMEMASTER FLAGS USED --------------
+Can not be attacked           Can convince all monsters
+Can summon all monsters       Can illusion all monsters
+Can sense invisibility        Ignored by monsters
+Do not gain infight           Has unlimited mana
+Has unlimited soul            Do no gain exhaustion
+Can always login              Can broadcast
+Can edit all house rights     Can not be banned
+Can not be pushed             Has unlimited capacity
+Can push all creatures        Talk red in private
+Talk red in channel           Talk orange in help-channel
+Gain max speed                Cannot be added to VIP
+Talk red anonymously          Ignore protection-zone
+Skip spell usage checks       Skip equip usage checks
+Can not be muted              Can not use combat
+Can not attack players        Can not attack monsters
+Cannot use spells             Cannot pickup items
+Do not gain experience        Do not gain mana
+Do not gain health            Do not gain skill
+Can not gain loot
+  -->
+  <group id="2" name="gamemaster" flags="412316860415" maxdeoptitems="0" maxvipentries="0" access="1" />
+<!------------------- GOD FLAGS USED ---------------------
+Can not be attacked           Can convince all monsters
+Can summon all monsters       Can illusion all monsters
+Can sense invisibility        Ignored by monsters
+Do not gain infight           Has unlimited mana
+Has unlimited soul            Do no gain exhaustion
+Can always login              Can broadcast
+Can edit all house rights     Can not be banned
+Can not be pushed             Has unlimited capacity
+Can push all creatures        Talk red in private
+Talk red in channel           Talk orange in help-channel
+Gain max speed                Cannot be added to VIP
+Talk red anonymously          Ignore protection-zone
+Skip spell usage checks       Skip equip usage checks
+Can not be muted              Permanent premium account
+Can not attack players        Do not gain experience
+Do not gain mana              Do not gain health
+Do not gain skill             
+-->
+  <group id="6" name="god" flags="547608305658" maxdepotitems="0" maxvipentries="0" access="1" />
+</groups>

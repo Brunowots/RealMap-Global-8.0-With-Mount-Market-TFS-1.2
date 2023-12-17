@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Runtel Blackspark" script="Runtel Blackspark.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="472" head="59" body="114" legs="0" feet="94" addons="1" />
+<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="
+			great health potion,7591,190;
+			great mana potion,7590,120;
+			great spirit potion,8472,190;
+			health potion,7618,45;
+			mana potion,7620,50;
+			moonlight rod,2186,1000;
+			necrotic rod,2185,5000;
+			snakebite rod,2182,500;
+			spellbook,2175,150;
+			strong health potion,7588,100;
+			strong mana potion,7589,80;
+			terra rod,2181,10000;
+			Hailstorm Rod,2183,15000;
+			Wand of Voodoo,8922,22000;
+            underworld rod,8910,30000;
+			ultimate health potion,8473,310;
+			wand of cosmic energy,2189,10000;
+			wand of decay,2188,5000;
+			wand of dragonbreath,2191,1000;
+			wand of vortex,2190,500;" />
+
+	</parameters>
+
+</npc>

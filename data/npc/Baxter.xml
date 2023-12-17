@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Baxter" script="Baxter.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="131" head="77" body="29" legs="29" feet="115" addons="0" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_sellable" value=";rat,3813,1" />
+	</parameters>
+</npc>

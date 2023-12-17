@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Topsy" script="Topsy.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="139" head="78" body="52" legs="100" feet="115" addons="0" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="blank rune,2260,10;moonlight rod,2186,1000;necrotic rod,2185,5000;snakebite rod,2182,500;spellbook,2175,150;terra rod,2181,10000;ultimate health potion,8473,310;wand of cosmic energy,2189,10000;wand of decay,2188,5000;wand of dragonbreath,2191,1000;wand of vortex,2190,500;" />
+		<parameter key="shop_sellable" value="vial,2006,5;" />
+	</parameters>
+</npc>

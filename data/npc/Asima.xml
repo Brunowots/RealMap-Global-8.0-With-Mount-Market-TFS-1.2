@@ -1,0 +1,11 @@
+<npc name="Asima" script="runes.lua" floorchange="0" walkinterval="3000" >
+	<health now="100" max="100"/>
+	<look type="138" head="97" body="70" legs="94" feet="76"/>
+	<parameters>
+		<parameter key="message_greet" value="Daraman's blessings, |PLAYERNAME|."/>
+		<parameter key="message_placedinqueue" value="Wait, |PLAYERNAME|!"/>
+		<parameter key="message_walkaway" value="Daraman's blessings."/>
+		<parameter key="message_farewell" value="Daraman's blessings."/>
+		<parameter key="message_idletimeout" value="Daraman's blessings."/>
+	</parameters>
+</npc>

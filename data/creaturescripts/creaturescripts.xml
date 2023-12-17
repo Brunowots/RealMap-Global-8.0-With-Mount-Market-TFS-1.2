@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creaturescripts>
+	<!-- Rookgaard -->
+	<event type="advance" name="AdvanceRookgaard" script="rookgaard/advance.lua" />
+
+	<!-- Elemental Spheres Quest -->
+	<event type="kill" name="ElementalSpheresOverlords" script="quests/elemental spheres/OverlordsKill.lua" />
+	
+	<!-- Hidden City Quest -->
+	<event type="kill" name="PythiusTheRotten" script="quests/Hidden City/PythiusTheRotten.lua" />
+	
+	<!-- In Service Of Yalahar Quest -->
+	<event type="kill" name="ServiceOfYalaharAzerus" script="quests/in service of yalahar/AzerusKill.lua" />
+	<event type="kill" name="ServiceOfYalaharDiseasedTrio" script="quests/in service of yalahar/DiseasedTrioKill.lua" />
+	<event type="kill" name="ServiceOfYalaharQuaraLeaders" script="quests/in service of yalahar/QuaraLeadersKill.lua" />
+	
+	<!-- Inquisition Quest -->
+	<event type="kill" name="InquisitionBosses" script="quests/inquisition/inquisitionQuestBosses.lua" />
+	<event type="kill" name="InquisitionUngreez" script="quests/inquisition/inquisitionQuestUngreez.lua" />
+	
+	<!-- Killing In The Name Of Quest -->
+	<event type="kill" name="KillingInTheNameOfKills" script="quests/killing in the name of/kills.lua" />
+	<event type="kill" name="KillingInTheNameOfKillss" script="quests/killing in the name of/necro.lua" />
+	<event type="kill" name="KillingInTheNameOfKillsss" script="quests/killing in the name of/minos.lua" />
+	
+	<!-- Secret Service Quest -->
+	<event type="kill" name="SecretServiceBlackKnight" script="quests/Secret Service Quest/blackKnight.lua" />
+	
+	<!-- Svargrond Arena: Killing a boss -->
+	<event type="kill" name="SvargrondArenaKill" script="quests/svargrond arena/arena_kill.lua" />
+
+	<!-- The New Frontier Quest -->
+	<event type="kill" name="NewFrontierShardOfCorruption" script="quests/the new frontier/ShardOfCorruption.lua" />
+	<event type="kill" name="NewFrontierTirecz" script="quests/the new frontier/TireczKill.lua" />
+	
+	<!-- Thieves Guild Quest -->
+	<event type="kill" name="ThievesGuildNomad" script="quests/Thieves Guild Quest/nomad.lua" />
+
+	<!-- Wrath of the Emperor Quest -->
+	<event type="kill" name="WotELizardMagistratus" script="quests/wrath of the emperor/lizardmagistratus.lua" />
+	<event type="kill" name="WotELizardNoble" script="quests/wrath of the emperor/lizardnoble.lua" />
+	<event type="kill" name="WotEKeeper" script="quests/wrath of the emperor/keeper.lua" />
+	<event type="kill" name="WotEBosses" script="quests/wrath of the emperor/bosses.lua" />
+	<event type="kill" name="WotEZalamon" script="quests/wrath of the emperor/zalamon.lua" />
+
+	<!-- Others -->
+	<event type="login" name="PremCheck" script="premcheck.lua" />
+	<event type="login" name="PlayerLogin" script="others/login.lua" />
+	<event type="login" name="loginEvents" script="others/loginEvents.lua" />
+	<event type="login" name="FirstItems" script="others/firstitems.lua" />
+	<event type="login" name="RegenerateStamina" script="others/regeneratestamina.lua" />	
+	<event type="logout" name="PlayerLogout" script="others/logout.lua" />
+	<event type="death" name="PlayerDeath" script="others/playerdeath.lua" />
+	<event type="death" name="DropLoot" script="others/droploot.lua" />
+	<event type="advance" name="AdvanceSave" script="others/advance_save.lua" />		
+	<event type="think" name="curar" interval="3000" script="others/curar.lua"/>
+	<event type="think" name="curar2" interval="3000" script="others/curar2.lua"/>
+	
+	<!-- NEWS -->
+	<event type="kill" name="surprise bag" script="others/surprise bag.lua"/>
+	<event type="kill" name="RarityGem" script="others/Rairty.lua"/>	
+    <event type="healthchange" name="statHP" script="others/stats.lua"/>
+    <event type="manachange" name="statMP" script="others/stats.lua"/>
+    <event type="preparedeath" name="statPVE" script="others/stats.lua"/>
+    <event type="kill" name="statLoot" script="others/stats.lua"/>
+    <event type="death" name="statDeath" script="others/stats.lua"/>
+		
+	
+</creaturescripts>

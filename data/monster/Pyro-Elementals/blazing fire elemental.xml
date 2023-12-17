@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Blazing Fire Elemental" nameDescription="a blazing fire elemental" race="fire" experience="450" speed="220" manacost="0">
+	<health now="650" max="650"/>
+	<look type="49" corpse="1487"/>
+	<targetchange interval="5000" chance="8"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-100"/>
+		<attack name="fire" interval="1000" chance="13" radius="4" target="1" min="-100" max="-150">
+			<attribute key="areaEffect" value="firearea"/>
+		</attack>
+		<attack name="fire" interval="1000" chance="12" range="7" radius="2" target="1" min="-65" max="-200">
+			<attribute key="shootEffect" value="fire"/>
+			<attribute key="areaEffect" value="firearea"/>
+		</attack>
+	</attacks>
+	<defenses armor="20" defense="20"/>
+	<immunities>
+		<immunity fire="1"/>
+		
+		<immunity invisible="1"/>
+	</immunities>
+	
+	<loot>
+		<item id="2148" countmax="212" chance="99970"/>	<!-- gold coin -->
+		<item id="2152" chance="14000"/>				<!-- platinum coin -->
+		<item id="2147" countmax="2" chance="6100"/>	<!-- small ruby -->
+		<item id="2187" chance="2300"/>					<!-- wand of inferno -->
+		<item id="2392" chance="530"/>					<!-- fire sword -->
+	</loot>
+</monster>

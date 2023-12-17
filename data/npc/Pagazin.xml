@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Pagazin" script="Pagazin.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="22" corpse="5962"/>
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" 
+		value="
+		nail,8309,30;
+		bat wing,5894,200;
+		bonelord eye,5898,200;
+		minotaur leather,5878,200;
+		holy orchid,5922,225;
+		ankh,2193,250;
+		eye patch,6098,250;
+		green dragon leather,5877,250;
+		green dragon scale,5920,250;
+		hook,6097,250;
+		peg leg,6126,250;
+		tusk,3956,250;
+		turtle shell,5899,300;
+		bear paw,5896,300;
+		scarab coin,2159,300;
+		chicken feather,5890,300;
+		honeycomb,5902,300;
+		heaven blossom,2743,300;
+		lizard scale,5881,300;
+		lizard leather,5876,375;
+		orc tooth,11113,375;
+		hardened bone,5925,400;
+		wolf paw,5897,400;
+		ape fur,5883,400;
+		blue piece of cloth,5912,500;
+		brown piece of cloth,5913,500;
+		green piece of cloth,5910,500;
+		red dragon leather,5948,500;
+		red dragon scale,5882,500;
+		perfect behemoth fang,5893,625;
+		red piece of cloth,5911,750;
+		white piece of cloth,5909,750;
+		yellow piece of cloth,5914,750;
+		vampire dust,5905,800;
+		iron ore,5880,1250;
+		piece of hell steel,5888,1250;
+		demonic essence,6500,2500;
+		fish fin,5895,3000;
+		spider silk,5879,3000;
+		demon dust,5527,4000;
+		behemoth claw,5930,5000;
+		shard,7290,5000;
+		piece of draconian steel,5889,7500;
+		vampire lord token,9020,8000;
+		piece of royal steel,5887,25000;
+		huge chunk of crude iron,5892,37500;
+		dragon claw,5919,500000
+		"/>
+		<parameter key="shop_sellable" value="
+		nail,8309,10;
+		bat wing,5894,50;
+		bonelord eye,5898,80;
+		minotaur leather,5878,80;
+		holy orchid,5922,90;
+		ankh,2193,100;
+		eye patch,6098,100;
+		green dragon leather,5877,100;
+		green dragon scale,5920,100;
+		hook,6097,100;
+		peg leg,6126,100;
+		tusk,3956,100;
+		turtle shell,5899,90;
+		bear paw,5896,100;
+		scarab coin,2159,100;
+		chicken feather,5890,30;
+		honeycomb,5902,40;
+		heaven blossom,2743,50;
+		lizard scale,5881,120;
+		lizard leather,5876,150;
+		orc tooth,11113,150;
+		hardened bone,5925,70;
+		wolf paw,5897,70;
+		ape fur,5883,120;
+		blue piece of cloth,5912,200;
+		brown piece of cloth,5913,100;
+		green piece of cloth,5910,200;
+		red dragon leather,5948,200;
+		red dragon scale,5882,200;
+		perfect behemoth fang,5893,250;
+		red piece of cloth,5911,300;
+		white piece of cloth,5909,100;
+		yellow piece of cloth,5914,150;
+		vampire dust,5905,400;
+		iron ore,5880,500;
+		piece of hell steel,5888,500;
+		demonic essence,6500,1000;
+		fish fin,5895,150;
+		spider silk,5879,100;
+		demon dust,5527,300;
+		behemoth claw,5930,2000;
+		shard,7290,2000;
+		piece of draconian steel,5889,3000;
+		vampire lord token,9020,1000;
+		piece of royal steel,5887,10000;
+		huge chunk of crude iron,5892,15000;
+		dragon claw,5919,100000
+		"/>
+		
+		
+		
+	</parameters>
+</npc>

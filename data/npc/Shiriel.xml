@@ -1,0 +1,11 @@
+<npc name="Shiriel" script="runes.lua" floorchange="0" walkinterval="3000" >
+	<health now="100" max="100"/>
+	<look type="144" head="2" body="103" legs="0" feet="95"/>
+	<parameters>
+		<parameter key="message_greet" value="Ashari |PLAYERNAME|."/>
+		<parameter key="message_placedinqueue" value="Wait, |PLAYERNAME|."/>
+		<parameter key="message_walkaway" value="Asha Thrazi."/>
+		<parameter key="message_farewell" value="Asha Thrazi."/>
+		<parameter key="message_idletimeout" value="Asha Thrazi."/>
+	</parameters>
+</npc>

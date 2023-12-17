@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Malunga" script="Malunga.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="149" head="95" body="78" legs="19" feet="0" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_sellable" value="tortoise egg,5678,100;turtle shell,5899,1000;" />
+	</parameters>
+</npc>

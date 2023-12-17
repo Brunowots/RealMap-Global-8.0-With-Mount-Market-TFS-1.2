@@ -1,0 +1,9 @@
+<npc name="Alexander" script="Alexander.lua" floorchange="0" walkinterval="3000" >
+	<health now="100" max="100"/>
+	<look type="130" head="96" body="63" legs="71" feet="97"/>
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="envenom rune,2292,130;animate dead rune,2316,375;blank rune,2260,10;crystal ball,2192,530;desintegrate rune,2310,80;energy bomb rune,2262,325;tempest rod,2183,15000;life ring,2168,900;magic wall rune,2293,350;moonlight rod,2186,1000;volcanic rod,2185,5000;paralyze rune,2278,700;poison bomb rune,2286,170;snakebite rod,2182,500;soulfire rune,2308,210;quagmire rod,2181,10000;wand of cosmic energy,2189,10000;wand of plague,2188,5000;wand of dragonbreath,2191,1000;wand of inferno,2187,15000;wand of vortex,2190,500;" />
+		<parameter key="shop_sellable" value="crystal ball,2192,190;life crystal,2177,85;mind stone,2178,170;" />
+	</parameters>
+</npc>

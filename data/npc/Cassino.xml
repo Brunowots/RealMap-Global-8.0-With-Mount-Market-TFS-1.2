@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<npc name="Cassino" script="cassino.lua" walkinterval="0" floorchange="0" emblem="1">
+<health now="100" max="100"/>
+<look type="132" head="90" body="80" legs="70" feet="64" addons="3"/>
+</npc>

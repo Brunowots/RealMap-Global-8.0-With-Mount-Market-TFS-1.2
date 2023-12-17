@@ -1,0 +1,10 @@
+<npc name="Frans" script="runes.lua" floorchange="0" walkinterval="3000" >
+	<health now="100" max="100"/>
+	<look typeex="2229"/>
+	<parameters>
+		<parameter key="message_greet" value="Beeee Greeeeted |PLAYERNAME|. What is your neeeed?"/>
+		<parameter key="message_placedinqueue" value="|PLAYERNAME|, I am veeeerry busy. Unfoooortunately you will have to waiiiit."/>
+		<parameter key="message_decline" value="Better not annoy a FRANS if you don't want to deeeeal with him!"/>
+		<parameter key="message_needmoremoney" value="Sorry, too many buttonssss and not enough copper in your pursssse."/>
+	</parameters>
+</npc>
