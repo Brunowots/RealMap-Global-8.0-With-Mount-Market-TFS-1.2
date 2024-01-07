@@ -809,6 +809,8 @@ Outfit_t LuaScriptInterface::getOutfit(lua_State* L, int32_t arg)
 {
 	Outfit_t outfit;
 	outfit.lookMount = getField<uint16_t>(L, arg, "lookMount");
+	outfit.lookWings = getField<uint16_t>(L, arg, "lookWings");
+	outfit.lookAura = getField<uint16_t>(L, arg, "lookAura");
 	outfit.lookAddons = getField<uint8_t>(L, arg, "lookAddons");
 
 	outfit.lookFeet = getField<uint8_t>(L, arg, "lookFeet");
@@ -819,7 +821,9 @@ Outfit_t LuaScriptInterface::getOutfit(lua_State* L, int32_t arg)
 	outfit.lookTypeEx = getField<uint16_t>(L, arg, "lookTypeEx");
 	outfit.lookType = getField<uint16_t>(L, arg, "lookType");
 
-	lua_pop(L, 7);
+	outfit.lookShader = getField<uint16_t>(L, arg, "lookShader");
+
+	lua_pop(L, 8);
 	return outfit;
 }
 
@@ -987,7 +991,7 @@ void LuaScriptInterface::pushPosition(lua_State* L, const Position& position, in
 
 void LuaScriptInterface::pushOutfit(lua_State* L, const Outfit_t& outfit)
 {
-	lua_createtable(L, 0, 7);
+	lua_createtable(L, 0, 11);
 	setField(L, "lookType", outfit.lookType);
 	setField(L, "lookTypeEx", outfit.lookTypeEx);
 	setField(L, "lookHead", outfit.lookHead);
@@ -996,6 +1000,9 @@ void LuaScriptInterface::pushOutfit(lua_State* L, const Outfit_t& outfit)
 	setField(L, "lookFeet", outfit.lookFeet);
 	setField(L, "lookAddons", outfit.lookAddons);
 	setField(L, "lookMount", outfit.lookMount);
+	setField(L, "lookWings", outfit.lookWings);
+	setField(L, "lookAura", outfit.lookAura);
+	setField(L, "lookShader", outfit.lookShader);
 }
 
 void LuaScriptInterface::pushReflect(lua_State* L, const Reflect& reflect)
@@ -1962,6 +1969,7 @@ void LuaScriptInterface::registerFunctions()
 
 	registerEnum(RELOAD_TYPE_ALL)
 	registerEnum(RELOAD_TYPE_ACTIONS)
+	registerEnum(RELOAD_TYPE_AURAS)
 	registerEnum(RELOAD_TYPE_CHAT)
 	registerEnum(RELOAD_TYPE_CONFIG)
 	registerEnum(RELOAD_TYPE_CREATURESCRIPTS)
@@ -1975,10 +1983,12 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(RELOAD_TYPE_NPCS)
 	registerEnum(RELOAD_TYPE_QUESTS)
 	registerEnum(RELOAD_TYPE_RAIDS)
+	registerEnum(RELOAD_TYPE_SCRIPTS)
+	registerEnum(RELOAD_TYPE_SHADERS)
 	registerEnum(RELOAD_TYPE_SPELLS)
 	registerEnum(RELOAD_TYPE_TALKACTIONS)
 	registerEnum(RELOAD_TYPE_WEAPONS)
-	registerEnum(RELOAD_TYPE_SCRIPTS)
+	registerEnum(RELOAD_TYPE_WINGS)
 
 	// _G
 	registerGlobalVariable("INDEX_WHEREEVER", INDEX_WHEREEVER);
@@ -2577,6 +2587,12 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Player", "addMount", LuaScriptInterface::luaPlayerAddMount);
 	registerMethod("Player", "removeMount", LuaScriptInterface::luaPlayerRemoveMount);
 	registerMethod("Player", "hasMount", LuaScriptInterface::luaPlayerHasMount);
+
+	registerMethod("Player", "addWing", LuaScriptInterface::luaPlayerAddWing);
+	registerMethod("Player", "removeWing", LuaScriptInterface::luaPlayerRemoveWing);
+
+	registerMethod("Player", "addAura", LuaScriptInterface::luaPlayerAddAura);
+	registerMethod("Player", "removeAura", LuaScriptInterface::luaPlayerRemoveAura);
 	
 	registerMethod("Player", "getPremiumDays", LuaScriptInterface::luaPlayerGetPremiumDays);
 	registerMethod("Player", "addPremiumDays", LuaScriptInterface::luaPlayerAddPremiumDays);
@@ -10327,6 +10343,110 @@ int LuaScriptInterface::luaPlayerRemoveMount(lua_State* L) {
 	return 1;
 }
 
+int LuaScriptInterface::luaPlayerAddWing(lua_State* L)
+{
+	// player:addWing(wingId or wingName)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	Wing* wing = nullptr;
+	if (isNumber(L, 2)) {
+		wing = g_game.wings.getWingByClientID(getNumber<uint8_t>(L, 2));
+	}
+	else {
+		wing = g_game.wings.getWingByName(getString(L, 2));
+	}
+
+	if (!wing) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	pushBoolean(L, player->addWing(wing->id));
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerRemoveWing(lua_State* L)
+{
+	// player:removeWing(wingId or wingName)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	uint8_t wingId;
+	if (isNumber(L, 2)) {
+		wingId = getNumber<uint8_t>(L, 2);
+	}
+	else {
+		Wing* wing = g_game.wings.getWingByName(getString(L, 2));
+		if (!wing) {
+			lua_pushnil(L);
+			return 1;
+		}
+		wingId = wing->id;
+	}
+
+	pushBoolean(L, player->removeWing(wingId));
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerAddAura(lua_State* L)
+{
+	// player:addAura(id or name)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	Aura* aura = nullptr;
+	if (isNumber(L, 2)) {
+		aura = g_game.auras.getAuraByClientID(getNumber<uint8_t>(L, 2));
+	}
+	else {
+		aura = g_game.auras.getAuraByName(getString(L, 2));
+	}
+
+	if (!aura) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	pushBoolean(L, player->addAura(aura->id));
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerRemoveAura(lua_State* L)
+{
+	// player:removeAura(id or name)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	uint8_t auraId;
+	if (isNumber(L, 2)) {
+		auraId = getNumber<uint8_t>(L, 2);
+	}
+	else {
+		Aura* aura = g_game.auras.getAuraByName(getString(L, 2));
+		if (!aura) {
+			lua_pushnil(L);
+			return 1;
+		}
+		auraId = aura->id;
+	}
+
+	pushBoolean(L, player->removeAura(auraId));
+	return 1;
+}
+
 int LuaScriptInterface::luaPlayerHasMount(lua_State* L) {
 	// player:hasMount(mountId or mountName)
 	const Player* player = getUserdata<const Player>(L, 1);
@@ -13251,12 +13371,15 @@ int LuaScriptInterface::luaConditionSetFormula(lua_State* L)
 
 int LuaScriptInterface::luaConditionSetOutfit(lua_State* L)
 {
-	// condition:setOutfit(outfit)
-	// condition:setOutfit(lookTypeEx, lookType, lookHead, lookBody, lookLegs, lookFeet[, lookAddons])
+	//condition:setOutfit(outfit)
+	//condition:setOutfit(lookTypeEx, lookType, lookHead, lookBody, lookLegs, lookFeet[, lookAddons[, lookMount, lookWings, lookAura, lookShader]])
 	Outfit_t outfit;
 	if (isTable(L, 2)) {
 		outfit = getOutfit(L, 2);
 	} else {
+		outfit.lookShader = getNumber<uint16_t>(L, 12, outfit.lookShader);
+		outfit.lookAura = getNumber<uint16_t>(L, 11, outfit.lookAura);
+		outfit.lookWings = getNumber<uint16_t>(L, 10, outfit.lookWings);
 		outfit.lookMount = getNumber<uint16_t>(L, 9, outfit.lookMount);
 		outfit.lookAddons = getNumber<uint8_t>(L, 8, outfit.lookAddons);
 		outfit.lookFeet = getNumber<uint8_t>(L, 7);

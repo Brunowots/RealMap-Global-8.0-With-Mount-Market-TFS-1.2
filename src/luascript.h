@@ -962,6 +962,12 @@ class LuaScriptInterface
 		static int luaPlayerRemoveMount(lua_State* L);
 		static int luaPlayerHasMount(lua_State* L);
 
+		static int luaPlayerAddWing(lua_State* L);
+		static int luaPlayerRemoveWing(lua_State* L);
+
+		static int luaPlayerAddAura(lua_State* L);
+		static int luaPlayerRemoveAura(lua_State* L);
+
 		static int luaPlayerGetPremiumDays(lua_State* L);
 		static int luaPlayerAddPremiumDays(lua_State* L);
 		static int luaPlayerRemovePremiumDays(lua_State* L);

@@ -67,7 +67,7 @@ mapAuthor = "Bruno"
 -- MySQL
 mysqlHost = "localhost"
 mysqlUser = "root"
-mysqlPass = ""
+mysqlPass = "nestor"
 mysqlDatabase = "global3"
 mysqlPort = 3306
 mysqlSock = ""

@@ -846,13 +846,24 @@ void ProtocolGame::parseSetOutfit(NetworkMessage& msg)
 	newOutfit.lookFeet = msg.getByte();
 	newOutfit.lookAddons = msg.getByte();
 	newOutfit.lookMount = msg.get<uint16_t>();
+	newOutfit.lookWings = otclientV8 ? msg.get<uint16_t>() : 0;
+	newOutfit.lookAura = otclientV8 ? msg.get<uint16_t>() : 0;
+	std::string shaderName = otclientV8 ? msg.getString() : "";
+	Shader* shader = g_game.shaders.getShaderByName(shaderName);
+	newOutfit.lookShader = shader ? shader->id : 0;
 	addGameTask(&Game::playerChangeOutfit, player->getID(), newOutfit);
 }
 
 void ProtocolGame::parseToggleMount(NetworkMessage& msg)
 {
-	bool mount = msg.getByte() != 0;
-	addGameTask(&Game::playerToggleMount, player->getID(), mount);
+	int mount = msg.get<int8_t>();
+	int wings = -1, aura = -1, shader = -1;
+	if (otclientV8 >= 254) {
+		wings = msg.get<int8_t>();
+		aura = msg.get<int8_t>();
+		shader = msg.get<int8_t>();
+	}
+	addGameTask(&Game::playerToggleOutfitExtension, player->getID(), mount, wings, aura, shader);
 }
 
 void ProtocolGame::parseUseItem(NetworkMessage& msg)
@@ -2613,8 +2624,8 @@ void ProtocolGame::sendOutfitWindow()
 
 	const auto& outfits = Outfits::getInstance().getOutfits(player->getSex());
 	protocolOutfits.reserve(outfits.size());
-	#pragma omp parallel for
-for (const Outfit& outfit : outfits) {
+
+	for (const Outfit& outfit : outfits) {
 		uint8_t addons;
 		if (!player->getOutfitAddons(outfit, addons)) {
 			continue;
@@ -2654,6 +2665,47 @@ for (const Outfit& outfit : outfits) {
 		msg.addString(mount->name);
 	}
 
+	if (otclientV8) {
+		std::vector<const Wing*> wings;
+		for (const Wing& wing : g_game.wings.getWings()) {
+			if (player->hasWing(&wing)) {
+				wings.push_back(&wing);
+			}
+		}
+
+		msg.addByte(wings.size());
+		for (const Wing* wing : wings) {
+			msg.add<uint16_t>(wing->clientId);
+			msg.addString(wing->name);
+		}
+
+		std::vector<const Aura*> auras;
+		for (const Aura& aura : g_game.auras.getAuras()) {
+			if (player->hasAura(&aura)) {
+				auras.push_back(&aura);
+			}
+		}
+
+		msg.addByte(auras.size());
+		for (const Aura* aura : auras) {
+			msg.add<uint16_t>(aura->clientId);
+			msg.addString(aura->name);
+		}
+
+		std::vector<const Shader*> shaders;
+		for (const Shader& shader : g_game.shaders.getShaders()) {
+			if (player->hasShader(&shader)) {
+				shaders.push_back(&shader);
+			}
+		}
+
+		msg.addByte(shaders.size());
+		for (const Shader* shader : shaders) {
+			msg.add<uint16_t>(shader->id);
+			msg.addString(shader->name);
+		}
+	}
+
 	writeToOutputBuffer(msg);
 }
 
@@ -2679,6 +2731,7 @@ void ProtocolGame::sendOutfitWindowOTC()
 		protocolOutfits.emplace_back("Gamemaster", 75, 0);
 	}
 
+	protocolOutfits.reserve(outfits.size());
 	for (const Outfit& outfit : outfits) {
 		uint8_t addons;
 		if (!player->getOutfitAddons(outfit, addons)) {
@@ -2686,6 +2739,9 @@ void ProtocolGame::sendOutfitWindowOTC()
 		}
 
 		protocolOutfits.emplace_back(outfit.name, outfit.lookType, addons);
+		if (protocolOutfits.size() == std::numeric_limits<uint8_t>::max()) { // Tibia client currently doesn't allow more than 255 outfits
+			break;
+		}
 	}
 
 	msg.addByte(protocolOutfits.size());
@@ -2706,6 +2762,47 @@ void ProtocolGame::sendOutfitWindowOTC()
 	for (const Mount* mount : mounts) {
 		msg.add<uint16_t>(mount->clientId);
 		msg.addString(mount->name);
+	}
+
+	if (otclientV8) {
+		std::vector<const Wing*> wings;
+		for (const Wing& wing : g_game.wings.getWings()) {
+			if (player->hasWing(&wing)) {
+				wings.push_back(&wing);
+			}
+		}
+
+		msg.addByte(wings.size());
+		for (const Wing* wing : wings) {
+			msg.add<uint16_t>(wing->clientId);
+			msg.addString(wing->name);
+		}
+
+		std::vector<const Aura*> auras;
+		for (const Aura& aura : g_game.auras.getAuras()) {
+			if (player->hasAura(&aura)) {
+				auras.push_back(&aura);
+			}
+		}
+
+		msg.addByte(auras.size());
+		for (const Aura* aura : auras) {
+			msg.add<uint16_t>(aura->clientId);
+			msg.addString(aura->name);
+		}
+
+		std::vector<const Shader*> shaders;
+		for (const Shader& shader : g_game.shaders.getShaders()) {
+			if (player->hasShader(&shader)) {
+				shaders.push_back(&shader);
+			}
+		}
+
+		msg.addByte(shaders.size());
+		for (const Shader* shader : shaders) {
+			msg.add<uint16_t>(shader->id);
+			msg.addString(shader->name);
+		}
 	}
 
 	writeToOutputBuffer(msg);
@@ -2845,6 +2942,13 @@ void ProtocolGame::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit)
 		msg.addItemId(outfit.lookTypeEx);
 	}
 	    msg.add<uint16_t>(outfit.lookMount);
+
+	if (otclientV8) {
+		msg.add<uint16_t>(outfit.lookWings);
+		msg.add<uint16_t>(outfit.lookAura);
+		Shader* shader = g_game.shaders.getShaderByID(outfit.lookShader);
+		msg.addString(shader ? shader->name : "");
+	}
 }
 
 void ProtocolGame::AddWorldLight(NetworkMessage& msg, LightInfo lightInfo)
@@ -3339,6 +3443,8 @@ void ProtocolGame::sendFeatures()
 	std::map<GameFeature_t, bool> features;
 	// place for non-standard OTCv8 features
 	features[GameFeature_t::ExtendedOpcode] = true;
+	//features[GameFeature_t::WingsAndAura] = true;
+	//features[GameFeature_t::OutfitShaders] = true;
 
 	// packet compression
 	// we don't send feature, because feature assumes all packets are compressed
