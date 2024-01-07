@@ -3325,9 +3325,9 @@ void ProtocolGame::sendFeatures()
 	if (!otclientV8)
 		return;
 
-	std::map<GameFeature, bool> features;
+	std::map<GameFeature_t, bool> features;
 	// place for non-standard OTCv8 features
-	features[GameExtendedOpcode] = true;
+	features[GameFeature_t::ExtendedOpcode] = true;
 
 	// packet compression
 	// we don't send feature, because feature assumes all packets are compressed
@@ -3341,10 +3341,10 @@ void ProtocolGame::sendFeatures()
 
 	auto msg = getOutputBuffer(1024);
 	msg->addByte(0x43);
-	msg->add<uint16_t>(features.size());
-	for(auto& feature : features) {
-		msg->addByte((uint8_t)feature.first);
-		msg->addByte(feature.second ? 1 : 0);
+	msg->add<uint16_t>(static_cast<uint16_t>(features.size()));
+	for (const auto& [gameFeature, haveFeature] : features) {
+		msg->addByte(static_cast<uint8_t>(gameFeature));
+		msg->addByte(haveFeature ? 1 : 0);
 	}
 
 	send(std::move(getCurrentBuffer())); // send this packet immediately
