@@ -39,6 +39,9 @@
 #include "reward.h"
 #include "rewardchest.h"
 #include "viewer.h"
+#include "auras.h"
+#include "wings.h"
+#include "shaders.h"
 
 #include "configmanager.h"
 extern ConfigManager g_config;
@@ -158,6 +161,29 @@ class Player final : public Creature, public Cylinder
 		bool untameMount(uint8_t mountId);
 		bool hasMount(const Mount* mount) const;
 		void dismount();
+
+		// Wings & Auras and Shaders
+		bool hasAura() const {
+			return defaultOutfit.lookAura != 0;
+		}
+		bool hasWings() const {
+			return defaultOutfit.lookWings != 0;
+		}
+		bool hasShader() const {
+			return defaultOutfit.lookShader != 0;
+		}
+		bool hasWing(const Wing* wing) const;
+		uint8_t getCurrentAura() const;
+		bool addWing(uint8_t wingId);
+		bool removeWing(uint8_t wingId);
+		bool addAura(uint8_t auraId);
+		bool removeAura(uint8_t auraId);
+		void setCurrentAura(uint8_t auraId);
+		bool hasAura(const Aura* aura) const;
+		uint8_t getCurrentWing() const;
+		void setCurrentWing(uint8_t wingId);
+		bool hasShader(const Shader* shader) const;
+		void setCurrentShader(int shader);
 
 		void sendFYIBox(const std::string& message) {
 			if (client) {

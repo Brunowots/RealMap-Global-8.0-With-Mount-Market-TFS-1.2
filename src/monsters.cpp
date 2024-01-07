@@ -935,6 +935,18 @@ for (auto flagNode : node.children()) {
 			mType->info.outfit.lookMount = pugi::cast<uint16_t>(attr.value());
 		}
 
+		if ((attr = node.attribute("aura"))) {
+			mType->info.outfit.lookAura = pugi::cast<uint16_t>(attr.value());
+		}
+
+		if ((attr = node.attribute("wings"))) {
+			mType->info.outfit.lookWings = pugi::cast<uint16_t>(attr.value());
+		}
+
+		if ((attr = node.attribute("shader"))) {
+			mType->info.outfit.lookShader = pugi::cast<uint16_t>(attr.value());
+		}
+
 		if ((attr = node.attribute("corpse"))) {
 			mType->info.lookcorpse = pugi::cast<uint16_t>(attr.value());
 		}

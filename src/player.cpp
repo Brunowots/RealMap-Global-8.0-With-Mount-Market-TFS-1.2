@@ -4552,6 +4552,180 @@ void Player::dismount()
 	defaultOutfit.lookMount = 0;
 }
 
+bool Player::hasWing(const Wing* wing) const
+{
+	if (isAccessPlayer()) {
+		return true;
+	}
+
+	if (wing->premium && !isPremium()) {
+		return false;
+	}
+
+	const uint8_t tmpWingId = wing->id - 1;
+
+	int32_t value;
+	if (!getStorageValue(PSTRG_WINGS_RANGE_START + (tmpWingId / 31), value)) {
+		return false;
+	}
+
+	return ((1 << (tmpWingId % 31)) & value) != 0;
+}
+
+uint8_t Player::getCurrentWing() const
+{
+	int32_t value;
+	if (getStorageValue(PSTRG_WINGS_CURRENTWINGS, value)) {
+		return value;
+	}
+	return 0;
+}
+
+void Player::setCurrentWing(uint8_t wingId)
+{
+	addStorageValue(PSTRG_WINGS_CURRENTWINGS, wingId);
+}
+
+bool Player::hasAura(const Aura* aura) const
+{
+	if (isAccessPlayer()) {
+		return true;
+	}
+
+	if (aura->premium && !isPremium()) {
+		return false;
+	}
+
+	const uint8_t tmpAuraId = aura->id - 1;
+
+	int32_t value;
+	if (!getStorageValue(PSTRG_AURAS_RANGE_START + (tmpAuraId / 31), value)) {
+		return false;
+	}
+
+	return ((1 << (tmpAuraId % 31)) & value) != 0;
+}
+
+uint8_t Player::getCurrentAura() const
+{
+	int32_t value;
+	if (getStorageValue(PSTRG_AURAS_CURRENTAURA, value)) {
+		return value;
+	}
+	return 0;
+}
+
+bool Player::addWing(uint8_t wingId)
+{
+	if (!g_game.wings.getWingByID(wingId)) {
+		return false;
+	}
+
+	const uint8_t tmpWingId = wingId - 1;
+	const uint32_t key = PSTRG_WINGS_RANGE_START + (tmpWingId / 31);
+
+	int32_t value;
+	if (getStorageValue(key, value)) {
+		value |= (1 << (tmpWingId % 31));
+	}
+	else {
+		value = (1 << (tmpWingId % 31));
+	}
+
+	addStorageValue(key, value);
+	return true;
+}
+
+bool Player::removeWing(uint8_t wingId)
+{
+	if (!g_game.wings.getWingByID(wingId)) {
+		return false;
+	}
+
+	const uint8_t tmpWingId = wingId - 1;
+	const uint32_t key = PSTRG_WINGS_RANGE_START + (tmpWingId / 31);
+
+	int32_t value;
+	if (!getStorageValue(key, value)) {
+		return true;
+	}
+
+	value &= ~(1 << (tmpWingId % 31));
+	addStorageValue(key, value);
+	return true;
+}
+
+bool Player::addAura(uint8_t auraId)
+{
+	if (!g_game.auras.getAuraByID(auraId)) {
+		return false;
+	}
+
+	const uint8_t tmpAuraId = auraId - 1;
+	const uint32_t key = PSTRG_AURAS_RANGE_START + (tmpAuraId / 31);
+
+	int32_t value;
+	if (getStorageValue(key, value)) {
+		value |= (1 << (tmpAuraId % 31));
+	}
+	else {
+		value = (1 << (tmpAuraId % 31));
+	}
+
+	addStorageValue(key, value);
+	return true;
+}
+
+bool Player::removeAura(uint8_t auraId)
+{
+	if (!g_game.auras.getAuraByID(auraId)) {
+		return false;
+	}
+
+	const uint8_t tmpAuraId = auraId - 1;
+	const uint32_t key = PSTRG_AURAS_RANGE_START + (tmpAuraId / 31);
+
+	int32_t value;
+	if (!getStorageValue(key, value)) {
+		return true;
+	}
+
+	value &= ~(1 << (tmpAuraId % 31));
+	addStorageValue(key, value);
+	return true;
+}
+
+void Player::setCurrentAura(uint8_t auraId)
+{
+	addStorageValue(PSTRG_AURAS_CURRENTAURA, auraId);
+}
+
+bool Player::hasShader(const Shader* shader) const
+{
+	if (isAccessPlayer()) {
+		return true;
+	}
+
+	if (shader->premium && !isPremium()) {
+		return false;
+	}
+
+	const uint8_t tmpShaderId = shader->id - 1;
+
+	int32_t value;
+	if (!getStorageValue(PSTRG_SHADERS_RANGE_START + (tmpShaderId / 31), value)) {
+		return false;
+	}
+
+	return ((1 << (tmpShaderId % 31)) & value) != 0;
+}
+
+void Player::setCurrentShader(int shader)
+{
+	//const uint8_t tmpShaderId = shader->id - 1;
+	addStorageValue(PSTRG_SHADERS_CURRENTSHADER, shader);
+}
+
 bool Player::addOfflineTrainingTries(skills_t skill, uint64_t tries)
 {
 	if (tries == 0 || skill == SKILL_LEVEL) {
