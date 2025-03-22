@@ -4237,65 +4237,53 @@ void Game::internalDecayItem(Item* item)
 
 void Game::checkDecay()
 {
-	g_scheduler.addEvent(createSchedulerTask(EVENT_DECAYINTERVAL, std::bind(&Game::checkDecay, this)));
+    g_scheduler.addEvent(createSchedulerTask(EVENT_DECAYINTERVAL, std::bind(&Game::checkDecay, this)));
 
-	size_t bucket = (lastBucket + 1) % EVENT_DECAY_BUCKETS;
-	auto & currentBucket = decayItems[bucket];
-	std::vector<Item*> itemsToRemove;
+    size_t bucket = (lastBucket + 1) % EVENT_DECAY_BUCKETS;
+    auto& currentBucket = decayItems[bucket];
+    std::vector<Item*> itemsToRemove;
 
-	for (auto it = currentBucket.begin(); it != currentBucket.end();)
-	{
-		Item* item = *it;
+    auto it = currentBucket.begin(), end = currentBucket.end();
+    while (it != end) {
+        Item* item = *it;
 
-		if (!item->canDecay())
-		{
-			item->setDecaying(DECAYING_FALSE);
-			ReleaseItem(item);
-			it = currentBucket.erase(it);
-			itemsToRemove.push_back(item);
-		}
-		else
-		{
-			int32_t duration = item->getDuration();
-			int32_t decreaseTime = (duration < EVENT_DECAYINTERVAL * EVENT_DECAY_BUCKETS) ? duration : EVENT_DECAYINTERVAL * EVENT_DECAY_BUCKETS;
+        if (!item->canDecay()) {
+            item->setDecaying(DECAYING_FALSE);
+            ReleaseItem(item);
+            it = currentBucket.erase(it); // Eliminar e avançar o iterador
+            continue;
+        }
 
-			duration -= decreaseTime;
-			item->decreaseDuration(decreaseTime);
+        int32_t duration = item->getDuration();
+        int32_t decreaseTime = std::min<int32_t>(EVENT_DECAYINTERVAL * EVENT_DECAY_BUCKETS, duration);
 
-			if (duration <= 0)
-			{
-				itemsToRemove.push_back(item);
-				it = currentBucket.erase(it);
-				internalDecayItem(item);
-				ReleaseItem(item);
-			}
-			else
-			{
-				size_t newBucket = (bucket + ((duration + EVENT_DECAYINTERVAL / 2) / 1000)) % EVENT_DECAY_BUCKETS;
-				if (newBucket == bucket)
-				{
-					itemsToRemove.push_back(item);
-					it = currentBucket.erase(it);
-					internalDecayItem(item);
-					ReleaseItem(item);
-				}
-				else
-				{
-					it = currentBucket.erase(it);
-					decayItems[newBucket].push_back(item);
-				}
-			}
-		}
-	}
+        duration -= decreaseTime;
+        item->decreaseDuration(decreaseTime);
 
-	lastBucket = bucket;
+        if (duration <= 0) {
+            it = currentBucket.erase(it); // Eliminar e avançar o iterador
+            internalDecayItem(item);
+            ReleaseItem(item);
+        }
+        else if (duration < EVENT_DECAYINTERVAL * EVENT_DECAY_BUCKETS) {
+            it = currentBucket.erase(it); // Eliminar e avançar o iterador
+            size_t newBucket = (bucket + ((duration + EVENT_DECAYINTERVAL / 2) / 1000)) % EVENT_DECAY_BUCKETS;
+            
+            if (newBucket == bucket) {
+                internalDecayItem(item);
+                ReleaseItem(item);
+            }
+            else {
+                decayItems[newBucket].push_back(item); // Mover o item para outro bucket
+            }
+        }
+        else {
+            ++it; // Avançar o iterador quando não se elimina nem move o item
+        }
+    }
 
-	for (Item* item : itemsToRemove)
-	{
-		currentBucket.erase(std::remove(currentBucket.begin(), currentBucket.end(), item), currentBucket.end());
-	}
-
-	cleanup();
+    lastBucket = bucket;
+    cleanup();
 }
 
 void Game::checkLight()
